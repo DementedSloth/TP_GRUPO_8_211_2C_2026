@@ -17,7 +17,7 @@ score = 0
 recomendaciones = ""
 
 # Reglas
-if stock == 0 and demanda == "Alta" and vencimiento == "Proximo":
+if stock == 0 and demanda == "Alta":
     score += 50
     recomendaciones += "- Reposición de emergencia inmediata.\n"
 
