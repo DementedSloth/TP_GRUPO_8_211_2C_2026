@@ -64,7 +64,7 @@ else:
 
 # Oferta
 oferta = "No"
-if vencimiento == "Proximo":
+if vencimiento == "Proximo" and stock > 0 and demanda != "Alta":
     oferta = "Sí, hacer oferta por vencimiento próximo"
 
 # Resultados
