@@ -6,8 +6,8 @@ print("-INGRESO DE DATOS DEL PRODUCTO")
 nombre = input("Ingrese el nombre del producto: ")
 stock = int(input("Ingrese el stock actual: "))
 stock_minimo = int(input("Ingrese el stock minimo: "))
-demanda = input("Ingrese la demanda (Baja, Media, Alta): ").strip().capitalize()
-vencimiento = input("Ingrese el vencimiento (Proximo, No_proximo): ").strip().capitalize()
+demanda = input("Ingrese la demanda (Baja, Media, Alta): ")
+vencimiento = input("Ingrese el vencimiento (Proximo, No_proximo): ")
 
 # Cálculos
 relacion_stock = f"({stock}/{stock_minimo})"
