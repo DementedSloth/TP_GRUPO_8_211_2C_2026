@@ -63,9 +63,29 @@ else:
     resultado_general = "Prioridad baja"
 
 # Oferta
+# Oferta
 oferta = "No"
-if vencimiento == "Proximo" and stock > 0 and demanda != "Alta":
+
+if vencimiento == "Proximo" and stock == 0:
+    oferta = "No aplica, sin stock"
+
+elif vencimiento == "Proximo" and demanda == "Alta":
+    oferta = "No, la alta demanda debería agotar el stock antes del vencimiento"
+
+elif vencimiento == "Proximo" and cobertura > 2:
+    oferta = "Sí, oferta muy grande (2x1 o descuento fuerte) por exceso de stock y vencimiento próximo"
+
+elif vencimiento == "Proximo" and stock >= stock_minimo:
     oferta = "Sí, hacer oferta por vencimiento próximo"
+
+elif vencimiento == "Proximo" and stock < stock_minimo and demanda == "Media":
+    oferta = "Sí, descuento moderado para liquidar antes del vencimiento"
+
+elif vencimiento == "Proximo" and stock < stock_minimo and demanda == "Baja":
+    oferta = "Sí, descuento grande para liquidar antes del vencimiento"
+
+elif vencimiento == "No_proximo" and cobertura > 2 and demanda == "Baja":
+    oferta = "Sí, promoción para liberar espacio en depósito (sin urgencia de vencimiento)"
 
 # Resultados
 if recomendaciones == "":
