@@ -14,7 +14,7 @@ relacion_stock = f"({stock}/{stock_minimo})"
 if stock_minimo == 0:
     cobertura = 0
 else:
-    cobertura = stock / stock_minimo
+    cobertura = stock / stock_minimo # (la cobertura es cuántas veces se llega a cubrir el stock mínimo)
 
 score = 0
 recomendaciones = ""
@@ -69,13 +69,13 @@ else:
 oferta = "No"
 
 if vencimiento == "Proximo" and stock == 0:
-    oferta = "No aplica, sin stock"
+    oferta = "No hay oferta, sin stock"
 
 elif vencimiento == "Proximo" and demanda == "Alta":
     oferta = "No, la alta demanda debería agotar el stock antes del vencimiento"
 
 elif vencimiento == "Proximo" and cobertura > 2:
-    oferta = "Sí, oferta muy grande (2x1 o descuento fuerte) por exceso de stock y vencimiento próximo"
+    oferta = "Sí, oferta muy grande por exceso de stock y vencimiento próximo"
 
 elif vencimiento == "Proximo" and stock >= stock_minimo:
     oferta = "Sí, hacer oferta por vencimiento próximo"
