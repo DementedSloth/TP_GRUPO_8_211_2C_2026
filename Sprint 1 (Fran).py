@@ -63,7 +63,6 @@ else:
     resultado_general = "Prioridad baja"
 
 # Oferta
-# Oferta
 oferta = "No"
 
 if vencimiento == "Proximo" and stock == 0:
