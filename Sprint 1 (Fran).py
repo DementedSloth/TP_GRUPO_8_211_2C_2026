@@ -69,7 +69,7 @@ if vencimiento == "Proximo":
 
 # Resultados
 if recomendaciones == "":
-    recomendaciones += "- Sin recomendaciones específicas."
+    recomendaciones += "- Sin recomendaciones."
 print(f"\n-EVALUACIÓN DE INVENTARIO\n"
     f"Producto: {nombre}\n"
     f"Stock: {relacion_stock}\n"
