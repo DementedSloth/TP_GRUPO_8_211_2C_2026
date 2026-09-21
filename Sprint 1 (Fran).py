@@ -11,7 +11,10 @@ vencimiento = input("Ingrese el vencimiento (Proximo, No_proximo): ")
 
 # Cálculos
 relacion_stock = f"({stock}/{stock_minimo})"
-cobertura = stock / stock_minimo
+if stock_minimo == 0:
+    cobertura = 0
+else:
+    cobertura = stock / stock_minimo
 
 score = 0
 recomendaciones = ""
