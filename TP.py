@@ -1,0 +1,124 @@
+# El grupo deberá definir :
+
+# ¿Qué tipo de organización utilizará el sistema?
+#    Un supermercado.
+
+# ¿Qué problema operativo intenta resolver?
+#    Decidir si un producto necesita reposición urgente, y si además
+#    conviene hacerle una oferta por estar próximo a vencer.
+
+# ¿Qué elementos serán analizados?
+#    Productos individuales, cargados uno por uno por teclado, con su
+#    stock, stock mínimo, demanda y estado de vencimiento.
+
+# ¿Qué decisiones o recomendaciones deberá producir?
+#    Un score de urgencia, una recomendación de prioridad de reposición
+#    (Reposicion urgente / Prioridad alta / Prioridad media / Prioridad baja)
+#    y un aviso aparte de si conviene hacer oferta por vencimiento.
+
+# ¿Qué factores modifican la prioridad de una situación?
+#    Que el stock esté por debajo del mínimo, que la demanda sea alta,
+#    y la combinación de ambas cosas juntas (stock bajo + demanda alta
+#    es más grave que cada una por separado).
+
+# ¿Qué información deberá conservarse?
+#    Contadores generales: cuántos productos se analizaron, cuántos
+#    necesitan reposición, cuántos son urgentes y cuántos entran en oferta.
+
+# ¿Qué representa el score?
+#    La urgencia de reposición de un producto. Score alto = más urgente
+#    reponerlo. No tiene relación con el vencimiento, que se maneja aparte.
+
+#
+
+# Variables posibles
+# Stock, demanda, antigüedad, costo, fecha, prioridad, cantidad, disponibilidad, tiempo de espera
+# frecuencia de uso, cumplimiento, capacidad, vencimiento, estado, categoría o nivel de importancia.
+
+# Score
+# Podría representar prioridad, urgencia, criticidad, eficiencia, conveniencia o necesidad de intervención.
+# Por ejemplo, un score alto podría representar mayor prioridad.
+# Sin embargo, el grupo podrá definir el sentido contrario siempre que mantenga coherencia durante todo el sistema.
+
+# Límites
+# No se espera desarrollar un ERP o sistema administrativo completo.
+# El proyecto deberá seleccionar una problemática de gestión suficientemente rica para construir reglas compuestas, pero con un alcance razonable para Programación I.
+
+
+productos_maximos = int(input("Ingrese la cantidad de productos: "))
+while productos_maximos <= 0:
+    print("Debe analizar al menos un producto, intentelo de nuevo.")
+    productos_maximos = int(input("Ingrese la cantidad de productos: "))
+
+contador = 0
+contador_urgentes = 0
+contador_reposicion = 0
+contador_ofertas = 0
+
+while contador < productos_maximos:
+    contador += 1
+    print(f"--- Producto numero: {contador} ---")
+
+    nombre = input("Ingrese el nombre del producto: ")
+
+    stock = int(input("Ingrese el stock actual: "))
+    while stock < 0:
+        print("El stock no puede ser negativo, intentelo de nuevo.")
+        stock = int(input("Ingrese el stock actual: "))
+
+    stock_minimo = int(input("Ingrese el stock minimo: "))
+    while stock_minimo < 0:
+        print("El stock minimo no puede ser negativo, intentelo de nuevo.")
+        stock_minimo = int(input("Ingrese el stock minimo: "))
+
+    demanda = input("Ingrese la demanda (Baja, Media, Alta): ")
+    while demanda != "Baja" and demanda != "Media" and demanda != "Alta":
+        print("Opcion invalida, intente de nuevo.")
+        demanda = input("Ingrese la demanda (Baja, Media, Alta): ")
+
+    vencimiento = input("Ingrese el vencimiento (Proximo, No_proximo): ")
+    while vencimiento != "Proximo" and vencimiento != "No_proximo":
+        print("Opcion invalida, intente de nuevo.")
+        vencimiento = input("Ingrese el vencimiento (Proximo, No_proximo): ")
+
+    score = 0
+
+
+    if stock < stock_minimo:
+        score += 40
+
+    if demanda == "Alta":
+        score += 30
+
+    if stock < stock_minimo and demanda == "Alta":
+        score += 20
+
+    if score >= 70:
+        recomendacion = "Reposicion urgente"
+        contador_urgentes += 1
+    elif score >= 40:
+        recomendacion = "Prioridad alta"
+    elif score >= 20:
+        recomendacion = "Prioridad media"
+    else:
+        recomendacion = "Prioridad baja"
+
+    if recomendacion == "Reposicion urgente" or recomendacion == "Prioridad alta":
+        contador_reposicion += 1
+
+    oferta = "No"
+    if vencimiento == "Proximo":
+        oferta = "Si, hacer oferta por vencimiento proximo"
+        contador_ofertas += 1
+
+    print(f"Producto: {nombre}")
+    print(f"Stock: {stock}")
+    print(f"Demanda: {demanda}")
+    print(f"Score: {score}")
+    print(f"Recomendacion: {recomendacion}")
+    print(f"Oferta: {oferta}")
+
+print(f"\nTotal analizado: {contador}")
+print(f"Necesitan reposicion: {contador_reposicion}")
+print(f"Urgentes: {contador_urgentes}")
+print(f"En oferta: {contador_ofertas}")
