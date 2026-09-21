@@ -19,7 +19,7 @@ recomendaciones = ""
 # Reglas
 if stock == 0 and demanda == "Alta" and vencimiento == "Proximo":
     score += 50
-    recomendaciones += "- Reposición de emergencia inmediata y liquidar saldo por vencimiento.\n"
+    recomendaciones += "- Reposición de emergencia inmediata.\n"
 
 if stock < stock_minimo and demanda == "Alta" and vencimiento == "No_proximo":
     score += 40
