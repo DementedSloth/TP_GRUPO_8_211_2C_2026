@@ -10,9 +10,9 @@ contador_media = 0
 contador_baja = 0
 contador_demanda_alta = 0
 
-seguir = True
+seguir = "si"
 
-while seguir:
+while seguir == "si":
     cantidad_consultas += 1
     print(f"\n--- Consulta N° {cantidad_consultas} ---")
     print("-INGRESO DE DATOS DEL PRODUCTO")
@@ -20,35 +20,35 @@ while seguir:
     nombre = input("Ingrese el nombre del producto: ")
 
     # Validaciones
-    valido = False
-    while not valido:
+    valido = "no"
+    while valido == "no":
         stock = int(input("Ingrese el stock actual: "))
         if stock >= 0:
-            valido = True
+            valido = "si"
         else:
             print("Error: el stock no puede ser negativo.")
 
-    valido = False
-    while not valido:
+    valido = "no"
+    while valido == "no":
         stock_minimo = int(input("Ingrese el stock minimo: "))
         if stock_minimo > 0:
-            valido = True
+            valido = "si"
         else:
             print("Error: el stock mínimo debe ser mayor a 0.")
 
-    valido = False
-    while not valido:
+    valido = "no"
+    while valido == "no":
         demanda = input("Ingrese la demanda (Baja, Media, Alta): ")
         if demanda == "Baja" or demanda == "Media" or demanda == "Alta":
-            valido = True
+            valido = "si"
         else:
             print("Error: ingrese exactamente Baja, Media o Alta. (Respetar mayúsculas).")
 
-    valido = False
-    while not valido:
+    valido = "no"
+    while valido == "no":
         vencimiento = input("Ingrese el vencimiento (Proximo, No_proximo): ")
         if vencimiento == "Proximo" or vencimiento == "No_proximo":
-            valido = True
+            valido = "si"
         else:
             print("Error: ingrese exactamente Proximo o No_proximo.")
 
@@ -173,9 +173,9 @@ while seguir:
     # Preguntar si continúa
     repetir = input("\n¿Desea evaluar otro producto? (S/N): ")
     if repetir == "S":
-        seguir = True
+        seguir = "si"
     else:
-        seguir = False
+        seguir = "no"
 
 
 
