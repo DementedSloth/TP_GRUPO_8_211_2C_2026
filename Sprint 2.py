@@ -1,4 +1,4 @@
-print("\n------ SISTEMA DE EVALUACIÓN DE INVENTARIO ------\n")
+print("\n------ EVALUACIÓN DE INVENTARIO ------\n")
 
 cantidad_consultas = 0
 suma_scores = 0
@@ -52,10 +52,12 @@ while seguir:
         else:
             print("Error: ingrese exactamente Proximo o No_proximo.")
 
-    #
+    
     
     relacion_stock = f"({stock}/{stock_minimo})"
     cobertura = stock / stock_minimo
+
+
 
     score = 0
     recomendaciones = ""
@@ -99,6 +101,8 @@ while seguir:
     if recomendaciones == "":
         recomendaciones = "- Sin recomendaciones.\n"
 
+
+
     # Resultado
     if score >= 70:
         resultado_general = "Reposición urgente"
@@ -108,6 +112,8 @@ while seguir:
         resultado_general = "Prioridad media"
     else:
         resultado_general = "Prioridad baja"
+
+
 
     # Oferta
     oferta = "No"
@@ -137,6 +143,8 @@ while seguir:
           f"Resultado General: {resultado_general}\n"
           f"Aviso de Oferta: {oferta}\n"
           f"Recomendaciones generadas:\n{recomendaciones}")
+    
+
 
     # Actualizar estadísticas
     suma_scores += score
@@ -169,23 +177,27 @@ while seguir:
     else:
         seguir = False
 
+
+
 # Estadísticas finales
 print("\n------ ESTADÍSTICAS FINALES ------")
 print(f"Cantidad de consultas realizadas: {cantidad_consultas}")
 
 promedio_score = suma_scores / cantidad_consultas
-print(f"Score promedio: {promedio_score:.2f}")
+print(f"Score promedio: {promedio_score}")
 print(f"Score máximo: {score_maximo}")
 print(f"Score mínimo: {score_minimo}")
 
 porcentaje_urgente = (contador_urgente / cantidad_consultas) * 100
 porcentaje_demanda_alta = (contador_demanda_alta / cantidad_consultas) * 100
-print(f"Porcentaje de consultas con Reposición urgente: {porcentaje_urgente:.1f}%")
-print(f"Porcentaje de consultas con demanda Alta: {porcentaje_demanda_alta:.1f}%")
+print(f"Porcentaje de consultas con Reposición urgente: {porcentaje_urgente}%")
+print(f"Porcentaje de consultas con demanda Alta: {porcentaje_demanda_alta}%")
 
-# Gráfico por consola
-print("\n--- Gráfico: Resultados generales por consulta ---")
-print(f"Reposición urgente | {'*' * contador_urgente}")
+
+
+# Gráfico
+print("\n--- Gráfico: Resultados por consulta ---")
+print(f"Reposición urgente  | {'*' * contador_urgente}")
 print(f"Prioridad alta      | {'*' * contador_alta}")
 print(f"Prioridad media     | {'*' * contador_media}")
 print(f"Prioridad baja      | {'*' * contador_baja}")
